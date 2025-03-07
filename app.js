@@ -44,7 +44,7 @@ window.addEventListener("load", ()=> {
                 return response.json();
             })
             .then(data => {
-                const {temp} = data.main;
+                const {temp} = Math.round(data.main * 10) /10;
                 //const {temp} = data.current;
                 const {description, icon} = data.weather[0];
                 //const {description, icon} = data.current.weather[0];
