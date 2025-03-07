@@ -35,7 +35,7 @@ window.addEventListener("load", ()=> {
             //const proxy = "https://cors-anywhere.herokuapp.com/";
 
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
 
@@ -58,12 +58,14 @@ window.addEventListener("load", ()=> {
                 temperatureDescription.textContent = description;
                 locationTimezone.textContent = name;
                 //locationTimezone.textContent = timezone;
-                degreeSpan.textContent = '°F';
+                degreeSpan.textContent = '°C';
+                //degreeSpan.textContent = '°F';
 
                 
 
                 //Formula for celsius
                 let celsius = (temp - 32) * (5 / 9);
+                let fahrenheit = (temp * (9/5)) + 32;
 
                 //set icon
                 //iconPlace.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -71,11 +73,18 @@ window.addEventListener("load", ()=> {
 
                 //Change temperature to Celsius/Farenheit
                 degreeSection.addEventListener('click', () => {
-                    if(degreeSpan.textContent === "°F") {
+                   /* if(degreeSpan.textContent === "°F") {
                         degreeSpan.textContent = "°C";
                         temperatureDegree.textContent = Math.round(celsius * 10) /10;
                     }else {
                         degreeSpan.textContent = "°F";
+                        temperatureDegree.textContent = temp;
+                    }*/
+                    if(degreeSpan.textContent === "°C") {
+                        degreeSpan.textContent = "°F";
+                        temperatureDegree.textContent = Math.round(fahrenheit * 100) /100;
+                    }else {
+                        degreeSpan.textContent = "°C";
                         temperatureDegree.textContent = temp;
                     }
                 })
