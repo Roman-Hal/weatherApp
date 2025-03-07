@@ -44,17 +44,19 @@ window.addEventListener("load", ()=> {
                 return response.json();
             })
             .then(data => {
-                const {temp} = Math.round(data.main * 10) /10;
+                const {temp} = data.main;
                 //const {temp} = data.current;
                 const {description, icon} = data.weather[0];
                 //const {description, icon} = data.current.weather[0];
                 const {name} = data;
                 //const {timezone} = data;
                 //const tZone = data.timezone;
-
+                
+                let celsius = Math.round(temp * 10) /10
                 //set DOM Elements from the API
                 //console.log(data.current.weather[0].description);
-                temperatureDegree.textContent = temp;
+                temperatureDegree.textContent = celsius;
+                //temperatureDegree.textContent = temp;
                 temperatureDescription.textContent = description;
                 locationTimezone.textContent = name;
                 //locationTimezone.textContent = timezone;
@@ -64,7 +66,8 @@ window.addEventListener("load", ()=> {
                 
 
                 //Formula for celsius
-                let celsius = (temp - 32) * (5 / 9);
+                
+                //let celsius = (temp - 32) * (5 / 9);
                 let fahrenheit = (temp * (9/5)) + 32;
 
                 //set icon
@@ -85,7 +88,8 @@ window.addEventListener("load", ()=> {
                         temperatureDegree.textContent = Math.round(fahrenheit * 100) /100;
                     }else {
                         degreeSpan.textContent = "°C";
-                        temperatureDegree.textContent = temp;
+                        temperatureDegree.textContent = celsius;
+                        //temperatureDegree.textContent = temp;
                     }
                 })
             });
