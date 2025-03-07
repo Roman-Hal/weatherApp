@@ -34,8 +34,8 @@ window.addEventListener("load", ()=> {
 
             //const proxy = "https://cors-anywhere.herokuapp.com/";
 
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
-            //const api = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
 
