@@ -48,14 +48,16 @@ window.addEventListener("load", ()=> {
                 //const {temp} = data.current;
                 const {description, icon} = data.weather[0];
                 //const {description, icon} = data.current.weather[0];
-                const {timezone} = data;
+                const {name} = data;
+                //const {timezone} = data;
                 //const tZone = data.timezone;
 
                 //set DOM Elements from the API
                 //console.log(data.current.weather[0].description);
                 temperatureDegree.textContent = temp;
                 temperatureDescription.textContent = description;
-                locationTimezone.textContent = timezone;
+                locationTimezone.textContent = name;
+                //locationTimezone.textContent = timezone;
                 degreeSpan.textContent = '°F';
 
                 
