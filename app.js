@@ -44,8 +44,10 @@ window.addEventListener("load", ()=> {
                 return response.json();
             })
             .then(data => {
-                const {temp } = data.current;
-                const {description, icon} = data.current.weather[0];
+                const {temp} = data.main;
+                //const {temp} = data.current;
+                const {description, icon} = data.weather[0];
+                //const {description, icon} = data.current.weather[0];
                 const {timezone} = data;
                 //const tZone = data.timezone;
 
