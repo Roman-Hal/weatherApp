@@ -2,6 +2,7 @@ window.addEventListener("load", ()=> {
     
     let lon;
     let lat;
+    let appDescription = document.querySelector('.app-name');
     let temperatureDescription = document.querySelector('.temperature-description');
     let temperatureDegree = document.querySelector('.temperature-degree');
     let locationTimezone = document.querySelector('.location-timezone');
@@ -54,6 +55,7 @@ window.addEventListener("load", ()=> {
                 
                 let celsius = Math.round(temp * 10) /10
                 //set DOM Elements from the API
+                appDescription.textContent = 'Weather App';
                 //console.log(data.current.weather[0].description);
                 temperatureDegree.textContent = celsius;
                 //temperatureDegree.textContent = temp;
@@ -65,7 +67,7 @@ window.addEventListener("load", ()=> {
 
                 
 
-                //Formula for celsius
+                //Formula for celsius and fahrenheit
                 
                 //let celsius = (temp - 32) * (5 / 9);
                 let fahrenheit = (temp * (9/5)) + 32;
