@@ -15,40 +15,80 @@ body {
     color: white;
 }
 
-.location, .time, .temperature, .app-name {
-    height: 25vh;
+.location, .time, .temperature, .app-name, .actualDate {
+    text-shadow: 1px 1px 1px black;
+    height: 20vh;
     width: 50%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+.actualDate {
+    height: 5vh;
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+    font-size: 20px;
+}
 .app-name {
+    height: 5vh;
     font-size: 35px;
     font-weight: bold;
+    text-shadow: 1px 1px 1px black;
 }
 .time {
     height: 5vh;
     font-size: 20px;
 }
 .temperature {
+    margin-top: 20px;
     flex-direction: column;
+    border-color: red;
+    border-width: 5px;
+}
+.temperature h2{
+    font-size: 40px;
+}
+.temperature-degree-section{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 .temperature-description {
     font-size: 25px;
 }
 .degree-section {
     display: flex;
+    gap: 10px;
     align-items: center;
     cursor: pointer;
+    box-shadow: 0px 0px 2px 2px grey;
+    border-color: orange;
+    border-width: 5px;
+    border-radius: 10px;
+    padding: 0px 15px 0px 15px;
 }
-.degree-section span {
+.feels-section {
+    display: flex;
+    flex: row;
+    gap: 10px;
+}
+.degree-section span, .feels-section span {
     margin: 10px;
     font-size: 30px;
+    
 }
 .degree-section h2 {
     font-size: 40px;
 }
 
+.feels-like-temperature {
+    /*flex-direction: column;*/
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 img {
     width: 30%;
+    /*box-shadow: 1px 1px 1px black;*/
 }
