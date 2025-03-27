@@ -1,3 +1,4 @@
+//tested mess
 //import{ apiKey } from "dotenv";
 /*import { config } from "dotenv";
 import './env';*/
@@ -5,12 +6,17 @@ import './env';*/
 /*const dotenv = require('dotenv')
 require('dotenv').config();
 const apiKey = process.env.API_KEY;*/
+//import { Translate } from "@google-cloud/translate";
+//const {Translate} = require('@google-cloud/translate').v2;
 window.addEventListener("load", ()=> {
     
+    getLocation();
 
     let lon;
     let lat;
     let appDescription = document.querySelector('.app-name');
+    let temperatureHead = document.querySelector('.temp-description-head');
+    let temperatureText = document.querySelector('.temperature-degree-text');
     let feelsDesc = document.querySelector('.feels-description');
     let feelsTemperature = document.querySelector('.feels-temp');
     let temperatureDescription = document.querySelector('.temperature-description');
@@ -32,19 +38,20 @@ window.addEventListener("load", ()=> {
     
 
     
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-        wrong.textContent = "Geolocation is not supported by this browser.";
-    }
+    
 
-    function showPosition(position) {
-            lon = position.coords.longitude;
-            lat = position.coords.latitude;
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+            //line bellow keep returning the position of the device like gps
+            /*navigator.geolocation.watchPosition(showPosition, showError);*/
+        } else {
+            wrong.textContent = "Geolocation is not supported by this browser.";
+        }
+    };
 
-            var myVar = setInterval(myTimer, 1000);
-
-                function myTimer() {
+        var myVar = setInterval(myTimer, 1000);
+            function myTimer() {
                 var date = new Date();
                 const options = {
                     weekday: "long",
@@ -57,13 +64,114 @@ window.addEventListener("load", ()=> {
                 timeActual.innerHTML = time;
                 dateActual.innerHTML = actualDate;
                 /*dateActual.innerHTML = date.toDateString("cs-CZ", options);*/
-                }
+            };
+
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // test using interval
+    //myInterval = setInterval(fetch, 2000);
+    //var myInterval = setInterval(showPosition, 2000);
+    /*let seconds = 0;
+        const intervalId = setInterval(() => {
+        seconds++;
+        console.log("Seconds elapsed: ", seconds);
+    }, 1000); // Interval set to 1 second*/
+
+    //Reload for location and the rest of the code
+
+        //var myLoc = setInterval(getLocation, 5000);
+    //var myInterval = setInterval(() => showPosition, 2000);
+    //setInterval(() => navigator.geolocation.getCurrentPosition(showPosition, showError), 2000);
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    function showPosition(position) {
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //Official google code for cloud translation
+
+     // Imports the Google Cloud client library
+    //const {Translate} = require('@google-cloud/translate').v2;
+
+    // Creates a client
+    //const translate = new Translate();
+
+    /**
+     * TODO(developer): Uncomment the following lines before running the sample.
+     */
+    //const text = 'The text to translate, e.g. Hello, world!';
+    //const target = 'The target language, e.g. ru';
+
+    //async function translateText() {
+    // Translates the text into the target language. "text" can be a string for
+    // translating a single piece of text, or an array of strings for translating
+    // multiple texts.
+    /*let [translations] = await translate.translate(text, target);
+    translations = Array.isArray(translations) ? translations : [translations];
+    console.log('Translations:');
+    translations.forEach((translation, i) => {
+        console.log(`${text[i]} => (${target}) ${translation}`);
+    });
+    }
+
+    translateText();*/
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+            const crd = position.coords;
+            let lon = crd.longitude;
+            let lat = crd.latitude;
+            //local language return
+            const lang = navigator.language || navigator.userLanguage;
+            const currentLangCodeShort = lang.split('-')[0];
+            /*console.log(lang);
+            console.log(currentLangCodeShort);*/
+
+            //translation of page to the default language
+
+            function setCookie(key, value, expiry) {
+                var expires = new Date();
+                expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+                document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+              }
+
+              function googleTranslateElementInit() {
+                setCookie('googtrans', `/en/${currentLangCodeShort}`,1);
+                new google.translate.TranslateElement({
+                   pageLanguage: 'en'
+                }, 'google_translate_element');
+            }
+
+            googleTranslateElementInit();
+
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //Page translation another way
+            /*let google_translate_element = currentLangCodeShort;
+
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, google_translate_element);
+            }*/
+            /*function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    includedLanguages: 'fr,en'
+                }, 'hiddenGoogleTranslate')};*/
+
+                //googleTranslateElementInit();
+
+            //!!!!!!!!!!!!!!!!!!!!!!
+            //test code for coordinates
+
+            /*console.log(`lon: ${crd.latitude}`);
+            console.log(`lan: ${crd.longitude}`);*/
+           /* let lon = position.coords.longitude;
+            let lat = position.coords.latitude;*/
 
             //const proxy = "https://cors-anywhere.herokuapp.com/";
             
 
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
             //const api = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=%REACT_APP_API_KEY%';
             //const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
@@ -82,15 +190,19 @@ window.addEventListener("load", ()=> {
                 //const {timezone} = data;
                 //const tZone = data.timezone;
                 
-                let celsius = Math.round(temp * 10) /10;
-                let feelsCelsius = Math.round(feels_like * 10) /10;
+                celsius = val => Math.round(val * 10) /10;
+
                 //set DOM Elements from the API
                 appDescription.textContent = 'Weather App';
+                //temperature description part
+                temperatureHead.textContent = 'TEMPERATURE';
+                temperatureText.textContent = 'now:';
                 //feels like temperature values
-                feelsDesc.textContent = 'feels:';
-                feelsTemperature.textContent = feelsCelsius;
+                feelsDesc.textContent = 'feels like:';
+                /*feelsTemperature.textContent = feelsCelsius;*/
+                feelsTemperature.textContent = celsius(feels_like);
                 //console.log(data.current.weather[0].description);
-                temperatureDegree.textContent = celsius;
+                temperatureDegree.textContent = celsius(temp);
                 //temperatureDegree.textContent = temp;
                 temperatureDescription.textContent = description;
                 locationTimezone.textContent = name;
@@ -104,8 +216,7 @@ window.addEventListener("load", ()=> {
                 //Formula for celsius and fahrenheit
                 
                 //let celsius = (temp - 32) * (5 / 9);
-                let fahrenheit = (temp * (9/5)) + 32;
-                let feelsFahrenheit = (feels_like * (9/5)) + 32;
+                fahrenheit = val => (val * (9/5)) + 32;
 
                 //set icon
                 //iconPlace.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -121,28 +232,21 @@ window.addEventListener("load", ()=> {
                 });
                 //Change temperature to Celsius/Farenheit
                 degreeSection.addEventListener('click', () => {
-                   /* if(degreeSpan.textContent === "°F") {
-                        degreeSpan.textContent = "°C";
-                        temperatureDegree.textContent = Math.round(celsius * 10) /10;
-                    }else {
-                        degreeSpan.textContent = "°F";
-                        temperatureDegree.textContent = temp;
-                    }*/
                     if(degreeSpan.textContent === "°C") {
                         degreeSpan.textContent = "°F";
                         feelsSpan.textContent = degreeSpan.textContent;
-                        temperatureDegree.textContent = Math.round(fahrenheit * 100) /100;
-                        feelsTemperature.textContent = Math.round(feelsFahrenheit *100) /100;
+                        temperatureDegree.textContent = Math.round(fahrenheit(temp) * 100) /100;
+                        feelsTemperature.textContent = Math.round(fahrenheit(feels_like) *100) /100;
                     }else {
                         degreeSpan.textContent = "°C";
                         feelsSpan.textContent = degreeSpan.textContent;
-                        temperatureDegree.textContent = celsius;
-                        feelsTemperature.textContent = feelsCelsius;
-                        //temperatureDegree.textContent = temp;
+                        temperatureDegree.textContent = celsius(temp);
+                        feelsTemperature.textContent = celsius(feels_like);
                     }
                 })
             });
     }
+
     /*else {
         // Browser doesn't support Geolocation
         handleNoGeolocation(false);

@@ -45,6 +45,9 @@ body {
     border-color: red;
     border-width: 5px;
 }
+.temp-description{
+    margin: 20px;
+}
 .temperature h2{
     font-size: 40px;
 }
@@ -62,7 +65,7 @@ body {
     align-items: center;
     cursor: pointer;
     box-shadow: 0px 0px 2px 2px grey;
-    border-color: orange;
+    /*border-color: orange;*/
     border-width: 5px;
     border-radius: 10px;
     padding: 0px 15px 0px 15px;
@@ -71,10 +74,12 @@ body {
     display: flex;
     flex: row;
     gap: 10px;
+   /* margin: 10px;*/
 }
 .degree-section span, .feels-section span {
-    margin: 10px;
-    font-size: 30px;
+   /* margin: 10px;*/
+    gap: 15px;
+    font-size: 38px;
     
 }
 .degree-section h2 {
@@ -85,7 +90,9 @@ body {
     /*flex-direction: column;*/
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 img {
