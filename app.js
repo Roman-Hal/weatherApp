@@ -1,5 +1,6 @@
+require('dotenv').config()
 window.addEventListener("load", ()=> {
-    let secKey = REACT_APP_API_KEY();
+    const secKey = process.env.API_KEY;
     getLocation();
 
     let lon;
