@@ -6,13 +6,26 @@ window.addEventListener("load", ()=> {
     //require('dotenv').config();
     //require("dotenv").config({ path: `../.env.${process.env.NODE_ENV_API_KEY}` });
 
-    exports.handler = async function (event, context) {
+    /*exports.handler = async function (event, context) {
         const secKey = process.env.MY_API_KEY;
         return {
           statusCode: 200,
           body: JSON.stringify(secKey),
         };
-      };
+      };*/
+
+      /*default async (request, context) => {
+        const secKey = Netlify.env.get("MY_API_KEY");
+      
+        return new Response(secKey, {
+          headers: { "content-type": "text/html" },
+        });
+      };*/
+      
+      
+
+
+      //const secKey = process.env.MY_API_KEY
       
     /*const secKey = NODE_ENV_API_KEY;
     console.log(secKey);*/
@@ -182,9 +195,9 @@ window.addEventListener("load", ()=> {
 
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
-            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
             //const api = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=%REACT_APP_API_KEY%';
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${secKey}`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${secKey}`;
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${import.meta.env.REACT_APP_API_KEY}`;
             //const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
