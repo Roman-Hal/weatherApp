@@ -1,15 +1,5 @@
-//tested mess
-//import{ apiKey } from "dotenv";
-/*import { config } from "dotenv";
-import './env';*/
-//import dotenv from "weatherApp/dotenv";
-/*const dotenv = require('dotenv')
-require('dotenv').config();
-const apiKey = process.env.API_KEY;*/
-//import { Translate } from "@google-cloud/translate";
-//const {Translate} = require('@google-cloud/translate').v2;
 window.addEventListener("load", ()=> {
-    
+    let secKey = REACT_APP_API_KEY();
     getLocation();
 
     let lon;
@@ -171,8 +161,9 @@ window.addEventListener("load", ()=> {
 
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`;
             //const api = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=%REACT_APP_API_KEY%';
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${secKey}`;
             //const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily,minutely&units=imperial&appid=b6cfa4030fe8998f2e47685f8d3e4cf4`
             //http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
 
@@ -198,7 +189,7 @@ window.addEventListener("load", ()=> {
                 temperatureHead.textContent = 'TEMPERATURE';
                 temperatureText.textContent = 'now:';
                 //feels like temperature values
-                feelsDesc.textContent = 'feels like:';
+                feelsDesc.textContent = 'feels:';
                 /*feelsTemperature.textContent = feelsCelsius;*/
                 feelsTemperature.textContent = celsius(feels_like);
                 //console.log(data.current.weather[0].description);

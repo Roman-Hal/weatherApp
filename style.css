@@ -1,24 +1,39 @@
 *{
     margin: 0;
     padding: 0;
+    max-height: 100%;
     box-sizing: border-box;
 }
 
+html {
+background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
+background-size: cover;
+height: 100%;
+overflow: hidden;
+}
+
 body {
-    height: 100vh;
+    /*min-height: 100%;*/
+    /*min-width: 500px;*/
+    /*height: 100vh;*/
+    /*min-height: 100vh;*/
+    max-height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
+    /*background: linear-gradient(rgb(47,150,163), rgb(48,62,143));*/
+    /*background-size: cover;*/
+    /*position: absolute;*/
     font-family: sans-serif;
     color: white;
 }
 
 .location, .time, .temperature, .app-name, .actualDate {
     text-shadow: 1px 1px 1px black;
-    height: 20vh;
-    width: 50%;
+    /*height: 15vh;*/
+    min-height: 18%;
+    max-width: 90%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -30,13 +45,14 @@ body {
     font-size: 20px;
 }
 .app-name {
-    height: 5vh;
+   /* height: 10vh;*/
     font-size: 35px;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
+    margin-bottom: 10px;
 }
 .time {
-    height: 5vh;
+    /*height: 5vh;*/
     font-size: 20px;
 }
 .temperature {
@@ -98,4 +114,46 @@ body {
 img {
     width: 30%;
     /*box-shadow: 1px 1px 1px black;*/
+}
+
+/*.goog-te-banner-frame {
+    display: none;
+}
+
+.goog-te-balloon-frame {
+    display: none !important;
+}*/
+
+.goog-te-combo {
+    width: px !important;
+}
+.goog-te-balloon-frame {
+display: none !important;
+}
+font {
+background: transparent !important;
+}
+a font:hover { 
+color: none !important;
+}
+#google_translate_element { 
+height: 26px !important;
+overflow: hidden !important;
+}
+/*.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+display: none !important;
+}*/
+body {
+top: 0px !important;
+}
+
+.skiptranslate {
+    display: none !important;
+}
+
+/*#:0.container {
+    visibility: none !important;
+}*/
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+    display: none !important;
 }
