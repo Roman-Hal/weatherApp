@@ -7,6 +7,7 @@
 html {
     margin: 0;
     background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
+    background-origin: border-box;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
