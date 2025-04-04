@@ -6,6 +6,7 @@
 }
 
 html {
+    display: absolute;
     margin: 0;
     background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
     background-origin: border-box;
@@ -104,6 +105,9 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+.temperature-description-sec{
+    display: flex;
 }
 .temperature-description {
     display: flex;
