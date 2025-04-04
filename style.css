@@ -27,7 +27,27 @@ body {
     /*position: absolute;*/
     font-family: sans-serif;
     color: white;
+    /*overflow-y: auto;*/
+    /*overflow: hidden;*/
+    overflow-y: auto;
 }
+/* .body::-webkit-scrollbar {
+    display: none;
+} */
+/* @supports (scroll-behavior: auto) {
+    .body {
+      display: none;
+    }
+  } */
+  
+  /* @supports selector(::-webkit-scrollbar) {
+    .body::-webkit-scrollbar {
+      display: none;
+    }
+    .body::-webkit-scrollbar-thumb {
+      background: none;
+    }
+  } */
 
 .location, .time, .temperature, .app-name, .actualDate {
     text-shadow: 1px 1px 1px black;
@@ -39,24 +59,28 @@ body {
     align-items: center;
 }
 .actualDate {
-    height: 5vh;
+    /*height: 5vh;*/
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
     font-size: 20px;
+    margin: 10px;
 }
 .app-name {
    /* height: 10vh;*/
     font-size: 35px;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;
+    margin-top: 10px;*/
+    margin: 10px;
 }
 .time {
     /*height: 5vh;*/
     font-size: 20px;
+    margin: 10px;
 }
 .temperature {
-    margin-top: 20px;
+    margin: 20px;
     flex-direction: column;
     border-color: red;
     border-width: 5px;
@@ -110,9 +134,13 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+.location {
+    margin: 10px;
+}
 
 img {
     width: 30%;
+    margin: 10px;
     /*box-shadow: 1px 1px 1px black;*/
 }
 
@@ -157,3 +185,13 @@ top: 0px !important;
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
     display: none !important;
 }
+
+/*.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+  
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+/*}*/

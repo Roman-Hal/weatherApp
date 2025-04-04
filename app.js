@@ -56,7 +56,9 @@ window.addEventListener("load", ()=> {
     console.log(apiKey);*/
     /*let dateActual = document.querySelector('.date');*/
 
-    
+    let lang = navigator.language;
+    // || navigator.userLanguage;
+    let currentLangCodeShort = lang.split('-')[0];
 
     
     
@@ -81,7 +83,11 @@ window.addEventListener("load", ()=> {
                     day: "numeric",
                   };
                 var time = date.toLocaleTimeString();
-                var actualDate = date.toLocaleDateString("default", options);
+                //var actualDate = date.toLocaleDateString("default", options);
+                var actualDate = date.toLocaleDateString(lang, options);
+                /*console.log(date);
+                console.log(time);
+                console.log(actualDate);*/
                 timeActual.innerHTML = time;
                 dateActual.innerHTML = actualDate;
                 /*dateActual.innerHTML = date.toDateString("cs-CZ", options);*/
@@ -145,23 +151,38 @@ window.addEventListener("load", ()=> {
             let lon = crd.longitude;
             let lat = crd.latitude;
             //local language return
-            const lang = navigator.language || navigator.userLanguage;
-            const currentLangCodeShort = lang.split('-')[0];
+            //let lang = navigator.language;
+            // || navigator.userLanguage;
+            //let currentLangCodeShort = lang.split('-')[0];
             /*console.log(lang);
             console.log(currentLangCodeShort);*/
 
             //translation of page to the default language
 
-            function setCookie(key, value, expiry) {
+            /*function setCookie(key, value, expiry) {
                 var expires = new Date();
                 expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
                 document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-              }
+                console.log("value:" + expires);
+            }*/
 
-              function googleTranslateElementInit() {
+            function setCookie(key, value, expiry) {
+                var expires = new Date();
+                expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+                document.cookie = key + '=' + value + ';expires=' + expires.toString();
+            }
+
+              /*function googleTranslateElementInit() {
                 setCookie('googtrans', `/en/${currentLangCodeShort}`,1);
                 new google.translate.TranslateElement({
                    pageLanguage: 'en'
+                }, 'google_translate_element');
+            }*/
+
+            function googleTranslateElementInit() {
+                setCookie('googtrans', `/en/${currentLangCodeShort}`,1);
+                new google.translate.TranslateElement({
+                   pageLanguage: `en`
                 }, 'google_translate_element');
             }
 
